@@ -11,16 +11,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --green: #1D9E75;
-      --green-dark: #0F6E56;
+      --green:       #1D9E75;
+      --green-dark:  #0F6E56;
       --green-light: #E1F5EE;
-      --esg-bg: #EAF3DE;
-      --esg-text: #3B6D11;
-      --purple-bg: #EEEDFE;
+      --esg-bg:      #EAF3DE;
+      --esg-text:    #3B6D11;
+      --purple-bg:   #EEEDFE;
       --purple-text: #3C3489;
-      --radius-md: 8px;
-      --radius-lg: 12px;
+      --radius-md:   8px;
+      --radius-lg:   12px;
       --radius-pill: 100px;
+      --border:      rgba(0,0,0,0.1);
     }
 
     body {
@@ -30,15 +31,14 @@
       min-height: 100vh;
     }
 
-    /* ── HEADER ── */
+    /* HEADER */
     header {
       background: #fff;
-      border-bottom: 0.5px solid rgba(0,0,0,0.1);
+      border-bottom: 0.5px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 100;
     }
-
     .header-inner {
       max-width: 1100px;
       margin: 0 auto;
@@ -49,13 +49,11 @@
       justify-content: space-between;
       gap: 1rem;
     }
-
     .logo-group {
       display: flex;
       align-items: center;
       gap: 10px;
     }
-
     .logo-dot {
       width: 10px;
       height: 10px;
@@ -63,14 +61,21 @@
       background: var(--green);
       flex-shrink: 0;
     }
-
     .logo-text {
       font-size: 12px;
       letter-spacing: .16em;
       color: #666;
       text-transform: uppercase;
     }
-
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sync-status {
+      font-size: 11px;
+      color: #aaa;
+    }
     .sheet-btn {
       display: inline-flex;
       align-items: center;
@@ -83,33 +88,22 @@
       border-radius: var(--radius-pill);
       padding: 6px 16px;
       text-decoration: none;
-      transition: background .15s, border-color .15s;
       white-space: nowrap;
+      transition: background .15s, border-color .15s;
     }
-
     .sheet-btn:hover {
       background: #c3f0df;
       border-color: var(--green);
     }
+    .sheet-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
 
-    .sheet-btn svg {
-      width: 14px;
-      height: 14px;
-      flex-shrink: 0;
-    }
-
-    /* ── HERO ── */
+    /* HERO */
     .hero {
       background: #fff;
-      border-bottom: 0.5px solid rgba(0,0,0,0.08);
+      border-bottom: 0.5px solid var(--border);
       padding: 2.5rem 2rem 2rem;
     }
-
-    .hero-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
+    .hero-inner { max-width: 1100px; margin: 0 auto; }
     .hero h1 {
       font-family: 'Noto Serif TC', serif;
       font-size: 28px;
@@ -118,20 +112,28 @@
       line-height: 1.4;
       margin-bottom: .6rem;
     }
+    .hero-sub { font-size: 14px; color: #666; line-height: 1.8; }
 
-    .hero-sub {
-      font-size: 14px;
-      color: #666;
-      line-height: 1.8;
+    /* ERROR BANNER */
+    .error-banner {
+      display: none;
+      max-width: 1100px;
+      margin: 1rem auto 0;
+      padding: .75rem 1.5rem;
+      background: #fff3f3;
+      border: 0.5px solid #f5a0a0;
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      color: #9b2c2c;
     }
+    .error-banner.show { display: block; }
 
-    /* ── CONTROLS ── */
+    /* FILTER BAR */
     .controls-bar {
       background: #fff;
-      border-bottom: 0.5px solid rgba(0,0,0,0.08);
+      border-bottom: 0.5px solid var(--border);
       padding: .85rem 2rem;
     }
-
     .controls-inner {
       max-width: 1100px;
       margin: 0 auto;
@@ -140,7 +142,6 @@
       align-items: center;
       gap: 8px;
     }
-
     .filter-btn {
       font-family: 'Noto Sans TC', sans-serif;
       font-size: 12px;
@@ -152,35 +153,10 @@
       cursor: pointer;
       transition: all .15s;
     }
-
     .filter-btn:hover { background: #f0f0ee; }
+    .filter-btn.active { background: var(--green); border-color: var(--green); color: #fff; }
 
-    .filter-btn.active {
-      background: var(--green);
-      border-color: var(--green);
-      color: #fff;
-    }
-
-    .controls-right {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      color: #999;
-    }
-
-    .sync-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--green);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
-
-    /* ── STATS ── */
+    /* STATS */
     .stats-area {
       max-width: 1100px;
       margin: 1.5rem auto 0;
@@ -188,28 +164,17 @@
       display: flex;
       gap: 1rem;
     }
-
     .stat {
       background: #fff;
-      border: 0.5px solid rgba(0,0,0,0.1);
+      border: 0.5px solid var(--border);
       border-radius: var(--radius-md);
       padding: .75rem 1.25rem;
       flex: 1;
     }
+    .stat-n { font-size: 24px; font-weight: 500; color: #111; }
+    .stat-l { font-size: 11px; color: #888; margin-top: 2px; }
 
-    .stat-n {
-      font-size: 24px;
-      font-weight: 500;
-      color: #111;
-    }
-
-    .stat-l {
-      font-size: 11px;
-      color: #888;
-      margin-top: 2px;
-    }
-
-    /* ── GRID ── */
+    /* GRID */
     .grid {
       max-width: 1100px;
       margin: 1.5rem auto 3rem;
@@ -219,21 +184,19 @@
       gap: 1rem;
     }
 
-    /* ── CARD ── */
+    /* CARD */
     .card {
       background: #fff;
-      border: 0.5px solid rgba(0,0,0,0.1);
+      border: 0.5px solid var(--border);
       border-radius: var(--radius-lg);
       display: flex;
       flex-direction: column;
       transition: border-color .2s, box-shadow .2s;
     }
-
     .card:hover {
       border-color: rgba(0,0,0,0.2);
       box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     }
-
     .card-body {
       padding: 1.25rem;
       flex: 1;
@@ -241,33 +204,15 @@
       flex-direction: column;
       gap: 10px;
     }
-
     .card-top {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       gap: 10px;
     }
-
-    .card-top-left {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      flex: 1;
-    }
-
-    .card-meta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .card-date {
-      font-size: 11px;
-      color: #aaa;
-    }
-
+    .card-top-left { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+    .card-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .card-date { font-size: 11px; color: #aaa; }
     .card-source {
       font-size: 10px;
       padding: 2px 8px;
@@ -275,7 +220,6 @@
       background: #f0f0ee;
       color: #777;
     }
-
     .card-tag {
       font-size: 10px;
       padding: 3px 10px;
@@ -284,10 +228,10 @@
       white-space: nowrap;
       flex-shrink: 0;
     }
-
     .tag-趨勢新聞 { background: var(--green-light); color: var(--green-dark); }
-    .tag-ESG永續  { background: var(--esg-bg);     color: var(--esg-text); }
-    .tag-團隊共識 { background: var(--purple-bg);  color: var(--purple-text); }
+    .tag-ESG永續  { background: var(--esg-bg);      color: var(--esg-text); }
+    .tag-團隊共識 { background: var(--purple-bg);   color: var(--purple-text); }
+    .tag-default  { background: #f0f0ee;             color: #555; }
 
     .card-title {
       font-family: 'Noto Serif TC', serif;
@@ -296,14 +240,7 @@
       color: #111;
       line-height: 1.55;
     }
-
-    .card-desc {
-      font-size: 12px;
-      color: #666;
-      line-height: 1.75;
-      flex: 1;
-    }
-
+    .card-desc { font-size: 12px; color: #666; line-height: 1.75; flex: 1; }
     .card-link {
       display: inline-flex;
       align-items: center;
@@ -316,65 +253,53 @@
       margin-top: auto;
       transition: color .15s;
     }
-
     .card-link:hover { color: var(--green-dark); }
+    .card-link svg { width: 12px; height: 12px; stroke: currentColor; fill: none; }
 
-    .card-link svg {
-      width: 12px;
-      height: 12px;
-      stroke: currentColor;
-      fill: none;
-    }
-
-    .empty {
-      grid-column: 1/-1;
+    .msg {
+      grid-column: 1 / -1;
       padding: 3rem;
       text-align: center;
       color: #aaa;
       font-size: 14px;
     }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
-      .header-inner { padding: 0 1rem; }
-      .hero { padding: 1.5rem 1rem 1rem; }
-      .hero h1 { font-size: 22px; }
-      .controls-bar { padding: .75rem 1rem; }
-      .stats-area { padding: 0 1rem; gap: .5rem; }
-      .grid { padding: 0 1rem; margin-top: 1rem; }
-      .logo-text { display: none; }
+      .header-inner, .controls-bar { padding-left: 1rem; padding-right: 1rem; }
+      .logo-text, .sync-status     { display: none; }
+      .hero                         { padding: 1.5rem 1rem 1rem; }
+      .hero h1                      { font-size: 22px; }
+      .stats-area                   { padding: 0 1rem; gap: .5rem; }
+      .grid                         { padding: 0 1rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
   <header>
     <div class="header-inner">
       <div class="logo-group">
         <div class="logo-dot"></div>
         <span class="logo-text">FIM — 利他共好｜內外聯動</span>
       </div>
-      <a
-        class="sheet-btn"
-        href="https://docs.google.com/spreadsheets/d/1a1XpArj0h3YU5nD-UndV2bW0eSQSioCpAkrvaC8RCCw/edit"
-        target="_blank"
-        rel="noopener"
-      >
-        <!-- Google Sheets icon -->
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="3" width="18" height="18" rx="2" fill="#1D9E75" opacity=".15"/>
-          <rect x="3" y="3" width="18" height="18" rx="2" stroke="#1D9E75" stroke-width="1.2"/>
-          <line x1="3" y1="9"  x2="21" y2="9"  stroke="#1D9E75" stroke-width="1"/>
-          <line x1="3" y1="14" x2="21" y2="14" stroke="#1D9E75" stroke-width="1"/>
-          <line x1="9" y1="3"  x2="9"  y2="21" stroke="#1D9E75" stroke-width="1"/>
-        </svg>
-        開啟試算表
-      </a>
+      <div class="header-right">
+        <span class="sync-status" id="sync-status">讀取中…</span>
+        <a class="sheet-btn"
+           href="https://docs.google.com/spreadsheets/d/1a1XpArj0h3YU5nD-UndV2bW0eSQSioCpAkrvaC8RCCw/edit"
+           target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="18" height="18" rx="2" fill="#1D9E75" opacity=".15"/>
+            <rect x="3" y="3" width="18" height="18" rx="2" stroke="#1D9E75" stroke-width="1.2"/>
+            <line x1="3"  y1="9"  x2="21" y2="9"  stroke="#1D9E75" stroke-width="1"/>
+            <line x1="3"  y1="14" x2="21" y2="14" stroke="#1D9E75" stroke-width="1"/>
+            <line x1="9"  y1="3"  x2="9"  y2="21" stroke="#1D9E75" stroke-width="1"/>
+          </svg>
+          開啟試算表
+        </a>
+      </div>
     </div>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-inner">
       <h1>知識影音平台</h1>
@@ -382,142 +307,183 @@
     </div>
   </section>
 
-  <!-- FILTER BAR -->
+  <div class="error-banner" id="error-banner">
+    ⚠️ 無法從 Google Sheets 讀取資料。請確認試算表已設為「知道連結的人可以檢視」，目前顯示備用資料。
+  </div>
+
   <div class="controls-bar">
-    <div class="controls-inner" id="filterRow">
+    <div class="controls-inner" id="filter-row">
       <button class="filter-btn active" data-type="all">全部</button>
-      <button class="filter-btn" data-type="趨勢新聞">趨勢新聞</button>
-      <button class="filter-btn" data-type="ESG永續">ESG永續</button>
-      <button class="filter-btn" data-type="團隊共識">團隊共識</button>
-      <div class="controls-right">
-        <div class="sync-dot"></div>
-        <span id="syncTime">同步中…</span>
-      </div>
     </div>
   </div>
 
-  <!-- STATS -->
-  <div class="stats-area" id="statsRow"></div>
-
-  <!-- GRID -->
-  <div class="grid" id="grid"></div>
+  <div class="stats-area" id="stats-row"></div>
+  <div class="grid" id="grid"><div class="msg">資料載入中…</div></div>
 
   <script>
+    /* ── 設定 ──────────────────────────────────────────
+       試算表欄位（從第 2 列開始，第 1 列為標題）：
+       A 上線日期 | B 主題類型 | C 影片名稱
+       D 摘要介紹 | E 影片連結 | F 內容來源
+    ─────────────────────────────────────────────────── */
     const SHEET_ID = '1a1XpArj0h3YU5nD-UndV2bW0eSQSioCpAkrvaC8RCCw';
+    const GID      = '0';
 
-    // Fallback data (used when sheet is not yet public or fetch fails)
-    const FALLBACK_DATA = [
-      { date:'2026/04/19', type:'趨勢新聞', title:'低軌衛星成為AI基礎建設關鍵拼圖',         desc:'世界行動通訊大會揭密AI如何重塑5G、6G與衛星通訊版圖，帶你看見產業新機會與普萊德新布局！',                                                                                    url:'https://notebooklm.google.com/notebook/7b632208-63a5-46a1-ab4d-1214cfc324ad/artifact/ede2d1fd-2d1a-46d7-b4a9-6b7d0433ffa3', source:'天下創新學院-天下零時差' },
-      { date:'2026/04/01', type:'ESG永續',  title:'AI 啟航，共融未來：普萊德科技的永續轉型之路', desc:'2026年第1季永續季刊說明，普萊德科技以 AI 為共考夥伴推動轉型，結合自然正向行動與長期社會陪伴，攜手夥伴共創韌性未來',                                                        url:'https://notebooklm.google.com/notebook/b467671b-ac33-4cad-9b87-a96b4cc5f7a9?artifactId=7d0e71f9-caea-4304-8dc2-5f74444d4b67', source:'2026Q1永續季刊' },
-      { date:'2025/12/15', type:'團隊共識', title:'114年年終檢討結語',                      desc:'CFO期許大家，面對外部快速變化，秉持以不變應萬變，穩健前行、靈活應對。',                                                                                               url:'https://youtu.be/4Mp5y7onfYg', source:'FIM自製' },
-      { date:'2025/07/14', type:'團隊共識', title:'114年年中檢討開場',                      desc:'2025 AI爆發成長，期中檢討將由AI小可愛開場登場，敬請期待！',                                                                                                           url:'https://youtu.be/5f0s66xCoqA', source:'FIM自製' },
-      { date:'2025/07/14', type:'團隊共識', title:'114年年中檢討結語',                      desc:'2025年中檢討圓滿落幕，AI小可愛暖心總結並展望未來！',                                                                                                                 url:'https://youtu.be/7MHnZDzGCMA', source:'FIM自製' },
-      { date:'2025/07/14', type:'團隊共識', title:'114年年終檢討開場',                      desc:'陳先生於AI策略共識營表示，AI是組織與每位同仁成長轉型的黃金機會，期許2026持續成長！',                                                                                     url:'https://youtu.be/zP1AncMNfK4', source:'PLANET AI策略共識營' }
+    // 加時間戳 &t=... 確保瀏覽器每次都重新抓，不吃 cache
+    const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${GID}`;
+
+    const FALLBACK = [
+      { date:'2026/04/19', type:'趨勢新聞', title:'低軌衛星成為AI基礎建設關鍵拼圖',           desc:'世界行動通訊大會揭密AI如何重塑5G、6G與衛星通訊版圖，帶你看見產業新機會與普萊德新布局！',                                            url:'https://notebooklm.google.com/notebook/7b632208-63a5-46a1-ab4d-1214cfc324ad/artifact/ede2d1fd-2d1a-46d7-b4a9-6b7d0433ffa3', source:'天下創新學院-天下零時差' },
+      { date:'2026/04/01', type:'ESG永續',  title:'AI 啟航，共融未來：普萊德科技的永續轉型之路', desc:'2026年第1季永續季刊說明，普萊德科技以 AI 為共考夥伴推動轉型，結合自然正向行動與長期社會陪伴，攜手夥伴共創韌性未來', url:'https://notebooklm.google.com/notebook/b467671b-ac33-4cad-9b87-a96b4cc5f7a9?artifactId=7d0e71f9-caea-4304-8dc2-5f74444d4b67', source:'2026Q1永續季刊' },
+      { date:'2025/12/15', type:'團隊共識', title:'114年年終檢討結語',    desc:'CFO期許大家，面對外部快速變化，秉持以不變應萬變，穩健前行、靈活應對。',                               url:'https://youtu.be/4Mp5y7onfYg', source:'FIM自製' },
+      { date:'2025/07/14', type:'團隊共識', title:'114年年中檢討開場',    desc:'2025 AI爆發成長，期中檢討將由AI小可愛開場登場，敬請期待！',                                          url:'https://youtu.be/5f0s66xCoqA', source:'FIM自製' },
+      { date:'2025/07/14', type:'團隊共識', title:'114年年中檢討結語',    desc:'2025年中檢討圓滿落幕，AI小可愛暖心總結並展望未來！',                                               url:'https://youtu.be/7MHnZDzGCMA', source:'FIM自製' },
+      { date:'2025/07/14', type:'團隊共識', title:'114年年終檢討開場',    desc:'陳先生於AI策略共識營表示，AI是組織與每位同仁成長轉型的黃金機會，期許2026持續成長！',                  url:'https://youtu.be/zP1AncMNfK4', source:'PLANET AI策略共識營' },
     ];
 
-    /* ── Utilities ── */
-    function parseDate(d) {
-      const p = d.split('/');
-      return p.length === 3 ? new Date(+p[0], +p[1] - 1, +p[2]) : new Date(0);
-    }
-    function formatDate(d) { return d.replace(/\//g, '.'); }
-    function sortDesc(data) { return [...data].sort((a, b) => parseDate(b.date) - parseDate(a.date)); }
-
-    /* ── Render ── */
-    function renderCards(data, filter) {
-      const grid = document.getElementById('grid');
-      let rows = filter === 'all' ? data : data.filter(r => r.type === filter);
-      rows = sortDesc(rows);
-      if (!rows.length) { grid.innerHTML = '<div class="empty">此分類目前沒有內容</div>'; return; }
-      grid.innerHTML = rows.map(r => `
-        <div class="card">
-          <div class="card-body">
-            <div class="card-top">
-              <div class="card-top-left">
-                <div class="card-meta">
-                  <span class="card-date">${formatDate(r.date)}</span>
-                  <span class="card-source">${r.source}</span>
-                </div>
-                <div class="card-title">${r.title}</div>
-              </div>
-              <span class="card-tag tag-${r.type}">${r.type}</span>
-            </div>
-            <div class="card-desc">${r.desc}</div>
-            <a class="card-link" href="${r.url}" target="_blank" rel="noopener">
-              開啟影片
-              <svg viewBox="0 0 12 12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M7 2h3v3M10 2L5.5 6.5M2 4h3v6H2z"/>
-              </svg>
-            </a>
-          </div>
-        </div>`).join('');
+    /* CSV 解析 */
+    function splitCSVLine(line) {
+      const res = []; let cur = '', inQ = false;
+      for (let i = 0; i < line.length; i++) {
+        const c = line[i];
+        if (c === '"') { inQ = !inQ; continue; }
+        if (c === ',' && !inQ) { res.push(cur); cur = ''; continue; }
+        cur += c;
+      }
+      res.push(cur);
+      return res;
     }
 
+    function parseCSV(text) {
+      const lines = text.split(/\r?\n/).filter(l => l.trim());
+      const rows = [];
+      for (let i = 1; i < lines.length; i++) {
+        const c = splitCSVLine(lines[i]);
+        if (c.length < 3) continue;
+        const title = (c[2] || '').trim();
+        if (!title) continue;
+        rows.push({
+          date:   (c[0] || '').trim(),
+          type:   (c[1] || '').trim(),
+          title,
+          desc:   (c[3] || '').trim(),
+          url:    (c[4] || '').trim(),
+          source: (c[5] || '').trim(),
+        });
+      }
+      return rows;
+    }
+
+    /* 工具 */
+    function toDate(s) {
+      const p = s.replace(/\./g, '/').split('/');
+      return p.length === 3 ? new Date(+p[0], +p[1]-1, +p[2]) : new Date(0);
+    }
+    function fmtDate(s) { return s.replace(/\//g, '.'); }
+    function pad(n) { return String(n).padStart(2,'0'); }
+    function nowStr() {
+      const n = new Date();
+      return `上次同步 ${pad(n.getHours())}:${pad(n.getMinutes())}`;
+    }
+
+    /* UI helpers */
+    const $  = id => document.getElementById(id);
+    const setStatus = m => $('sync-status').textContent = m;
+    const showErr   = () => $('error-banner').classList.add('show');
+    const hideErr   = () => $('error-banner').classList.remove('show');
+
+    /* 渲染統計 */
     function renderStats(data) {
-      document.getElementById('statsRow').innerHTML = [
-        { n: data.length,                                         l: '影片總數' },
-        { n: [...new Set(data.map(r => r.type))].length,         l: '內容類型' },
-        { n: [...new Set(data.map(r => r.source))].length,       l: '內容來源' }
+      $('stats-row').innerHTML = [
+        { n: data.length,                                   l: '影片總數' },
+        { n: [...new Set(data.map(r => r.type))].length,   l: '內容類型' },
+        { n: [...new Set(data.map(r => r.source))].length, l: '內容來源' },
       ].map(s => `<div class="stat"><div class="stat-n">${s.n}</div><div class="stat-l">${s.l}</div></div>`).join('');
     }
 
-    function setSync() {
-      const n = new Date();
-      document.getElementById('syncTime').textContent =
-        `上次同步 ${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`;
+    /* 渲染卡片（由新到舊） */
+    function renderCards(data, filter) {
+      let rows = filter === 'all' ? [...data] : data.filter(r => r.type === filter);
+      rows.sort((a, b) => toDate(b.date) - toDate(a.date));
+
+      if (!rows.length) { $('grid').innerHTML = '<div class="msg">此分類目前沒有內容</div>'; return; }
+
+      $('grid').innerHTML = rows.map(r => {
+        const known   = ['趨勢新聞','ESG永續','團隊共識'];
+        const tagCls  = known.includes(r.type) ? `tag-${r.type}` : 'tag-default';
+        return `<div class="card"><div class="card-body">
+          <div class="card-top">
+            <div class="card-top-left">
+              <div class="card-meta">
+                <span class="card-date">${fmtDate(r.date)}</span>
+                ${r.source ? `<span class="card-source">${r.source}</span>` : ''}
+              </div>
+              <div class="card-title">${r.title}</div>
+            </div>
+            ${r.type ? `<span class="card-tag ${tagCls}">${r.type}</span>` : ''}
+          </div>
+          ${r.desc ? `<div class="card-desc">${r.desc}</div>` : ''}
+          ${r.url  ? `<a class="card-link" href="${r.url}" target="_blank" rel="noopener">開啟影片
+            <svg viewBox="0 0 12 12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 2h3v3M10 2L5.5 6.5M2 4h3v6H2z"/>
+            </svg></a>` : ''}
+        </div></div>`;
+      }).join('');
     }
 
-    /* ── Google Sheets fetch (gviz — no API key needed, sheet must be "anyone with link can view") ── */
-    function parseGviz(raw) {
+    /* 動態篩選按鈕 */
+    function buildFilters(data) {
+      const types  = [...new Set(data.map(r => r.type).filter(Boolean))];
+      const row    = $('filter-row');
+      const cur    = row.querySelector('.filter-btn.active')?.dataset.type || 'all';
+      row.innerHTML = '';
+      ['all', ...types].forEach(t => {
+        const btn = document.createElement('button');
+        btn.className    = 'filter-btn' + (t === cur ? ' active' : '');
+        btn.dataset.type = t;
+        btn.textContent  = t === 'all' ? '全部' : t;
+        row.appendChild(btn);
+      });
+    }
+
+    /* 狀態與資料 */
+    let allData     = [];
+    let activeFilter = 'all';
+
+    /* 主載入函式 — 每次呼叫都帶時間戳強制重新拉取 */
+    async function loadData() {
+      hideErr();
+      setStatus('同步中…');
       try {
-        const json = JSON.parse(raw.replace(/^[^{]+/, '').replace(/;$/, ''));
-        return json.table.rows.map(r => {
-          const c = r.c || [];
-          const v = i => (c[i] && c[i].v != null) ? String(c[i].v) : '';
-          let date = v(0);
-          // gviz returns dates as "Date(yyyy,m,d)" (month is 0-based)
-          if (date.startsWith('Date(')) {
-            const p = date.match(/\d+/g);
-            if (p) date = `${p[0]}/${String(+p[1] + 1).padStart(2, '0')}/${String(p[2]).padStart(2, '0')}`;
-          }
-          return { date, type: v(1), title: v(2), desc: v(3), url: v(4), source: v(5) };
-        }).filter(r => r.title);
-      } catch (e) { return null; }
-    }
-
-    async function fetchSheet() {
-      try {
-        const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&range=A2:F200`;
-        const res = await fetch(url);
-        if (!res.ok) throw new Error('fetch failed');
-        const parsed = parseGviz(await res.text());
-        if (parsed && parsed.length) return parsed;
-      } catch (e) { /* fall through */ }
-      return FALLBACK_DATA;
-    }
-
-    /* ── Init ── */
-    let currentFilter = 'all';
-    let allData = [];
-
-    async function refresh() {
-      allData = await fetchSheet();
+        const res = await fetch(CSV_URL + '&t=' + Date.now(), { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const parsed = parseCSV(await res.text());
+        if (!parsed.length) throw new Error('no rows');
+        allData = parsed;
+        setStatus(nowStr());
+      } catch (e) {
+        showErr();
+        if (!allData.length) allData = FALLBACK;
+        setStatus('同步失敗，顯示備用資料');
+      }
+      buildFilters(allData);
       renderStats(allData);
-      renderCards(allData, currentFilter);
-      setSync();
+      renderCards(allData, activeFilter);
     }
 
-    document.getElementById('filterRow').addEventListener('click', e => {
+    /* 篩選點擊 */
+    $('filter-row').addEventListener('click', e => {
       const btn = e.target.closest('.filter-btn');
       if (!btn) return;
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      currentFilter = btn.dataset.type;
-      renderCards(allData, currentFilter);
+      activeFilter = btn.dataset.type;
+      renderCards(allData, activeFilter);
     });
 
-    refresh();
-    setInterval(refresh, 5 * 60 * 1000); // re-sync every 5 minutes
+    /* 啟動 */
+    loadData();
+    setInterval(loadData, 5 * 60 * 1000); // 每 5 分鐘自動更新
   </script>
 </body>
 </html>
