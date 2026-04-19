@@ -141,7 +141,7 @@
     .hero {
       background: linear-gradient(180deg, #FFF3E0 0%, #FFE0B2 60%, #FFCC80 100%);
       border-bottom: 1px solid var(--border2);
-      padding: 0.7rem 2rem 0.6rem;
+      padding: 1.2rem 2rem 1rem;
       position: relative;
       overflow: hidden;
     }
@@ -797,69 +797,50 @@
 
     /* ── 啟動 + 每 5 分鐘自動同步 ── */
 
-    /* ── 太陽表情切換（開朗正向）── */
+    /* ── 太陽表情切換（開朗正向，每3秒換一次）── */
     (function initSunFace() {
-      // 每種表情：[左眼, 右眼, 嘴巴]  cx=920 cy=65 臉半徑26
+      // cx=920 cy=65 臉半徑26，用 innerHTML 整體替換避免 fill 衝突
       const FACES = [
-        // 1. 閉眼大笑
-        { el: 'M911 60 Q914 55 917 60',
-          er: 'M923 60 Q926 55 929 60',
-          m:  'M912 70 Q920 79 928 70' },
-        // 2. 圓眼驚喜
-        { el: 'circle:913,60,2.5',
-          er: 'circle:927,60,2.5',
-          m:  'M913 70 Q920 78 927 70' },
-        // 3. 眨眼（左閉右開）
-        { el: 'M911 60 Q914 55 917 60',
-          er: 'circle:927,60,2.5',
-          m:  'M913 69 Q920 77 927 69' },
-        // 4. 星星眼
-        { el: 'star:913,60',
-          er: 'star:927,60',
-          m:  'M912 70 Q920 80 928 70' },
-        // 5. 開心大笑（大嘴）
-        { el: 'circle:913,60,2.5',
-          er: 'circle:927,60,2.5',
-          m:  'M911 69 Q920 82 929 69' },
+        // 1. 閉眼溫柔微笑
+        `<path d="M911 59 Q914 54 917 59" stroke="#E65100" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+         <path d="M923 59 Q926 54 929 59" stroke="#E65100" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+         <path d="M913 70 Q920 78 927 70" stroke="#E65100" stroke-width="2.2" fill="none" stroke-linecap="round"/>`,
+        // 2. 圓眼驚喜開心
+        `<circle cx="914" cy="59" r="3" fill="#E65100"/>
+         <circle cx="926" cy="59" r="3" fill="#E65100"/>
+         <circle cx="915" cy="57.5" r="1" fill="white"/>
+         <circle cx="927" cy="57.5" r="1" fill="white"/>
+         <path d="M912 70 Q920 79 928 70" stroke="#E65100" stroke-width="2.2" fill="none" stroke-linecap="round"/>`,
+        // 3. 眨眼俏皮（左閉右開）
+        `<path d="M911 59 Q914 54 917 59" stroke="#E65100" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+         <circle cx="926" cy="59" r="3" fill="#E65100"/>
+         <circle cx="927" cy="57.5" r="1" fill="white"/>
+         <path d="M913 70 Q920 77 927 70" stroke="#E65100" stroke-width="2.2" fill="none" stroke-linecap="round"/>`,
+        // 4. 星星眼超開心
+        `<path d="M910 61 L914 57 L918 61 M912 57.5 L916 61.5" stroke="#E65100" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+         <path d="M922 61 L926 57 L930 61 M924 57.5 L928 61.5" stroke="#E65100" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+         <path d="M911 70 Q920 81 929 70" stroke="#E65100" stroke-width="2.5" fill="none" stroke-linecap="round"/>`,
+        // 5. 大笑（大嘴）
+        `<circle cx="914" cy="59" r="3" fill="#E65100"/>
+         <circle cx="926" cy="59" r="3" fill="#E65100"/>
+         <circle cx="915" cy="57.5" r="1" fill="white"/>
+         <circle cx="927" cy="57.5" r="1" fill="white"/>
+         <path d="M911 69 Q920 83 929 69" stroke="#E65100" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+         <path d="M912 72 Q920 80 928 72" fill="#E65100" opacity="0.15"/>`,
       ];
 
-      function setFace(f) {
-        const el = document.getElementById('eye-l');
-        const er = document.getElementById('eye-r');
-        const m  = document.getElementById('mouth');
-        if (!el || !er || !m) return;
-
-        function applyEye(elem, val) {
-          if (val.startsWith('circle:')) {
-            const [,cx,cy,r] = val.split(':')[1].split(',');
-            elem.setAttribute('d', ''); // clear path
-            // 改成小圓點用 ellipse
-            elem.setAttribute('d', `M${+cx-+r} ${cy} a${r},${r} 0 1,0 ${2*+r},0 a${r},${r} 0 1,0 -${2*+r},0`);
-          } else if (val.startsWith('star:')) {
-            const [cx,cy] = val.split(':')[1].split(',');
-            const x=+cx, y=+cy, s=3;
-            elem.setAttribute('d',
-              `M${x},${y-s} L${x+0.9},${y-0.9} L${x+s},${y} L${x+0.9},${y+0.9} L${x},${y+s} L${x-0.9},${y+0.9} L${x-s},${y} L${x-0.9},${y-0.9}Z`
-            );
-            elem.setAttribute('fill','#E65100');
-          } else {
-            elem.setAttribute('d', val);
-            elem.setAttribute('fill','none');
-          }
-        }
-
-        applyEye(el, f.el);
-        applyEye(er, f.er);
-        m.setAttribute('d', f.m);
-      }
+      const group = document.getElementById('sun-face');
+      if (!group) return;
 
       let idx = 0;
-      setFace(FACES[0]);
+      group.innerHTML = FACES[0];
+
       setInterval(() => {
         idx = (idx + 1) % FACES.length;
-        setFace(FACES[idx]);
+        group.innerHTML = FACES[idx];
       }, 3000);
     })();
+
 
     loadData();
     setInterval(loadData, 5 * 60 * 1000);
