@@ -41,7 +41,7 @@
 
     body {
       font-family: 'Noto Sans TC', sans-serif;
-      background: var(--bg);
+      background: #FDF6EE;
       color: var(--text);
       min-height: 100vh;
     }
@@ -139,11 +139,25 @@
 
     /* ══ HERO ══ */
     .hero {
-      background: linear-gradient(135deg, #FFF5EB 0%, #FDE8D8 55%, #FDF0E0 100%);
+      background: linear-gradient(180deg, #FFF3E0 0%, #FFE0B2 60%, #FFCC80 100%);
       border-bottom: 1px solid var(--border2);
       padding: 2.8rem 2rem 2.2rem;
+      position: relative;
+      overflow: hidden;
     }
-    .hero-inner { max-width: 1100px; margin: 0 auto; }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
     .hero h1 {
       font-family: 'Noto Serif TC', serif;
       font-size: 30px;
@@ -172,7 +186,7 @@
     .ticker-wrap {
       background: linear-gradient(90deg, #FDEBD0 0%, #FAE0BC 50%, #FDEBD0 100%);
       border-bottom: 1px solid rgba(200,130,60,0.25);
-      height: 40px;
+      height: 34px;
       position: sticky;
       top: 64px;
       z-index: 99;
@@ -182,18 +196,18 @@
     }
     .ticker-mascot {
       flex-shrink: 0;
-      width: 56px;
-      height: 32px;
+      width: 50px;
+      height: 34px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: rgba(210,120,50,0.12);
       border-right: 1px solid rgba(180,100,30,0.18);
-      overflow: visible;
+      overflow: hidden;
     }
     .ticker-text {
       flex: 1;
-      height: 32px;
+      height: 34px;
       overflow: hidden;
       position: relative;
     }
@@ -406,7 +420,7 @@
   <!-- ══ MARQUEE ══ -->
   <div class="ticker-wrap">
     <div class="ticker-mascot">
-      <svg width="44" height="28" viewBox="0 0 72 40" xmlns="http://www.w3.org/2000/svg">
+      <svg width="46" height="30" viewBox="0 0 72 40" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="bm" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%"   stop-color="#FFEE58" stop-opacity="1"/>
@@ -463,6 +477,87 @@
 
   <!-- ══ HERO ══ -->
   <section class="hero">
+    <!-- 療癒背景 SVG -->
+    <svg class="hero-bg" viewBox="0 0 1100 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- 背景漸層底色 -->
+      <defs>
+        <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"  stop-color="#FFF9C4"/>
+          <stop offset="100%" stop-color="#FFE082" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- 太陽光暈 -->
+      <circle cx="900" cy="70" r="110" fill="url(#sunGlow)" opacity="0.7"/>
+
+      <!-- 太陽本體 -->
+      <circle cx="900" cy="70" r="72" fill="#FFD740" opacity="0.45"/>
+      <circle cx="900" cy="70" r="54" fill="#FFCA28" opacity="0.55"/>
+
+      <!-- 太陽光芒 -->
+      <g stroke="#FFD740" stroke-width="4" stroke-linecap="round" opacity="0.35">
+        <line x1="900" y1="5"  x2="900" y2="-8"/>
+        <line x1="900" y1="135" x2="900" y2="148"/>
+        <line x1="835" y1="70" x2="822" y2="70"/>
+        <line x1="965" y1="70" x2="978" y2="70"/>
+        <line x1="854" y1="24" x2="845" y2="15"/>
+        <line x1="946" y1="24" x2="955" y2="15"/>
+        <line x1="854" y1="116" x2="845" y2="125"/>
+        <line x1="946" y1="116" x2="955" y2="125"/>
+      </g>
+
+      <!-- 療癒笑臉（在太陽中央）-->
+      <circle cx="900" cy="70" r="38" fill="#FFFDE7" opacity="0.92"/>
+      <!-- 左眼（閉眼弧，療癒感）-->
+      <path d="M882 62 Q887 55 892 62" stroke="#E65100" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+      <!-- 右眼 -->
+      <path d="M908 62 Q913 55 918 62" stroke="#E65100" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+      <!-- 微笑 -->
+      <path d="M886 78 Q900 92 914 78" stroke="#E65100" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+      <!-- 腮紅 -->
+      <ellipse cx="878" cy="76" rx="8" ry="5" fill="#FFAB76" opacity="0.55"/>
+      <ellipse cx="922" cy="76" rx="8" ry="5" fill="#FFAB76" opacity="0.55"/>
+
+      <!-- 雲朵 1（右下）-->
+      <g opacity="0.55">
+        <ellipse cx="1020" cy="155" rx="75" ry="35" fill="#FFF8E1"/>
+        <ellipse cx="980"  cy="142" rx="48" ry="32" fill="#FFF8E1"/>
+        <ellipse cx="1055" cy="140" rx="40" ry="28" fill="#FFF8E1"/>
+        <ellipse cx="1090" cy="155" rx="32" ry="24" fill="#FFF8E1"/>
+      </g>
+
+      <!-- 雲朵 2（中間偏右）-->
+      <g opacity="0.4">
+        <ellipse cx="720" cy="165" rx="60" ry="28" fill="#FFE0B2"/>
+        <ellipse cx="688" cy="155" rx="38" ry="25" fill="#FFE0B2"/>
+        <ellipse cx="750" cy="152" rx="34" ry="22" fill="#FFE0B2"/>
+      </g>
+
+      <!-- 雲朵 3（左側）-->
+      <g opacity="0.5">
+        <ellipse cx="120" cy="150" rx="85" ry="36" fill="#FFF8E1"/>
+        <ellipse cx="72"  cy="138" rx="50" ry="30" fill="#FFF8E1"/>
+        <ellipse cx="160" cy="136" rx="44" ry="26" fill="#FFF8E1"/>
+        <ellipse cx="200" cy="150" rx="36" ry="24" fill="#FFF8E1"/>
+      </g>
+
+      <!-- 小雲朵（上方點綴）-->
+      <g opacity="0.3">
+        <ellipse cx="350" cy="30" rx="45" ry="20" fill="#FFF8E1"/>
+        <ellipse cx="320" cy="24" rx="28" ry="18" fill="#FFF8E1"/>
+        <ellipse cx="375" cy="22" rx="24" ry="16" fill="#FFF8E1"/>
+      </g>
+
+      <!-- 小愛心 -->
+      <path d="M220 55 C220 50 213 46 209 51 C205 46 198 50 198 55 C198 64 209 73 209 73 C209 73 220 64 220 55Z" fill="#FFAB76" opacity="0.45"/>
+      <path d="M70 80 C70 76 65 73 62 77 C59 73 54 76 54 80 C54 87 62 93 62 93 C62 93 70 87 70 80Z" fill="#FFD54F" opacity="0.35"/>
+
+      <!-- 小星星 -->
+      <polygon points="160,50 163,60 173,60 165,67 168,77 160,71 152,77 155,67 147,60 157,60" fill="#FFD740" opacity="0.4"/>
+      <polygon points="280,90 282,96 288,96 283,100 285,106 280,102 275,106 277,100 272,96 278,96" fill="#FFD740" opacity="0.3"/>
+    </svg>
+
     <div class="hero-inner">
       <h1>利他共好平台</h1>
       <p class="hero-sub">集結PLANET共識、永續行動、趨勢新聞等議題，運用AI自製影片與大家一起分享交流！</p>
