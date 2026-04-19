@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FIM — 利他共好｜內外聯動知識影音平台</title>
+  <title>FIM — 利他共好｜內外聯動</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -167,6 +167,38 @@
       color: #9b2c2c;
     }
     .error-banner.show { display: block; }
+
+    /* ══ TICKER ══ */
+    .ticker-wrap {
+      background: linear-gradient(90deg, #FFF0E0 0%, #FDE8D4 50%, #FFF0E0 100%);
+      border-bottom: 1px solid rgba(232,132,90,0.22);
+      height: 40px;
+      overflow: hidden;
+      position: relative;
+    }
+    .ticker-slot {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--text2);
+      font-weight: 400;
+      letter-spacing: .02em;
+      padding: 0 2rem;
+      text-align: center;
+    }
+    @keyframes slideInUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+    @keyframes slideOutUp {
+      from { transform: translateY(0);    opacity: 1; }
+      to   { transform: translateY(-100%); opacity: 0; }
+    }
+    .ticker-slot.enter { animation: slideInUp  .5s ease forwards; }
+    .ticker-slot.leave { animation: slideOutUp .5s ease forwards; }
 
     /* ══ FILTER BAR ══ */
     .controls-bar {
@@ -349,11 +381,14 @@
     </div>
   </header>
 
+  <!-- ══ MARQUEE ══ -->
+  <div class="ticker-wrap" id="ticker-wrap"></div>
+
   <!-- ══ HERO ══ -->
   <section class="hero">
     <div class="hero-inner">
-      <h1>知識影音平台</h1>
-      <p class="hero-sub">彙整趨勢洞察、永續行動與PLANET共識等議題，透過AI自製影片與大家一同分享交流！</p>
+      <h1>利他共好平台</h1>
+      <p class="hero-sub">集結PLANET共識、永續行動、趨勢新聞等議題，運用AI自製影片與大家一起分享交流！</p>
     </div>
   </section>
 
@@ -498,6 +533,37 @@
     let allData      = [];
     let activeFilter = 'all';
     let isLoading    = false;
+
+    /* ── 垂直切換 Ticker ── */
+    /* ── Ticker 從下往上切換 ── */
+    const MESSAGES = [
+      '企業文化：【誠信卓越、利他共好、創新永續】，以紀律為基石，是推動公司前進的力量！',
+      '共進迎變，鏈結韌性未來！',
+      'Planet 核心價值：Shaping Future Networking　數位創新 連結未來',
+      'Planet 核心價值 — 永續發展 Sustainability；國際品牌 Global Brand；研發創新 Innovation',
+      'Planet 願景：創建一個科技性、世界性的品牌，在國際上具有品牌影響力。',
+      'Planet 使命：開發高品質、高附加價值的網路通訊傳輸設備，滿足全球客戶網路應用。共創經濟、社會、環境之 ESG 企業永續價值！',
+      'CFO名言：以不變，應萬變！',
+      'CFO名言：人要創造自己被利用的價值，為自己打造可信任的個人品牌。',
+    ];
+    (function initTicker() {
+      const wrap = document.getElementById('ticker-wrap');
+      if (!wrap) return;
+      let cur = 0;
+      let slot = document.createElement('div');
+      slot.className = 'ticker-slot';
+      slot.textContent = MESSAGES[0];
+      wrap.appendChild(slot);
+      setInterval(() => {
+        cur = (cur + 1) % MESSAGES.length;
+        const old = wrap.querySelector('.ticker-slot');
+        if (old) { old.classList.add('leave'); setTimeout(() => old.remove(), 500); }
+        const next = document.createElement('div');
+        next.className = 'ticker-slot enter';
+        next.textContent = MESSAGES[cur];
+        wrap.appendChild(next);
+      }, 3500);
+    })();
 
     /* ── 主載入（時間戳 + no-store 避免 cache）── */
     async function loadData() {
