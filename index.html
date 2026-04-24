@@ -13,26 +13,26 @@
     :root {
       --bg:           #FDF6EE;
       --surface:      #FFFFFF;
-      --surface2:     #FEF3E8;
-      --border:       rgba(200,130,70,0.18);
-      --border2:      rgba(200,130,70,0.32);
+      --surface2:     #E8F5E9;
+      --border:       rgba(76,175,80,0.25);
+      --border2:      rgba(76,175,80,0.35);
 
-      --accent:       #E8845A;
-      --accent-dark:  #C4623A;
-      --accent-light: #FDE8DC;
+      --accent:       #4CAF50;
+      --accent-dark:  #2E7D32;
+      --accent-light: #E8F5E9;
 
-      --warm1-light:  #FEF0DC;
-      --warm1-text:   #7A4208;
-      --warm2-light:  #FAEAE4;
-      --warm2-text:   #6E2E1A;
-      --warm3-light:  #FBF3E2;
-      --warm3-text:   #5E4010;
+      --warm1-light:  #E8F5E9;
+      --warm1-text:   #1B5E20;
+      --warm2-light:  #F1F8E9;
+      --warm2-text:   #33691E;
+      --warm3-light:  #F9FBE7;
+      --warm3-text:   #558B2F;
 
-      --text:         #3A2410;
-      --text2:        #6B4A28;
-      --text3:        #9A7A58;
+      --text:         #1B3A1F;
+      --text2:        #2E5E34;
+      --text3:        #5A8A60;
 
-      --header-bg:    #FFF0E0;
+      --header-bg:    #F0FAF0;
 
       --radius-md:    8px;
       --radius-lg:    14px;
@@ -41,16 +41,16 @@
 
     body {
       font-family: 'Noto Sans TC', sans-serif;
-      background: #FDF6EE;
+      background: #F2F9F2;
       color: var(--text);
       min-height: 100vh;
     }
 
     /* ══ HEADER ══ */
     header {
-      background-color: var(--header-bg);
-      border-bottom: 1.5px solid rgba(232,132,90,0.35);
-      box-shadow: 0 2px 10px rgba(200,100,50,0.10);
+      background: linear-gradient(135deg, #F0FAF0 0%, #E8F5E9 100%);
+      border-bottom: 1.5px solid rgba(60,160,70,0.3);
+      box-shadow: 0 2px 10px rgba(40,120,50,0.08);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -106,14 +106,14 @@
       font-size: 12px;
       color: var(--text2);
       background: var(--surface);
-      border: 1px solid var(--border2);
+      border: 1px solid rgba(60,140,70,0.25);
       border-radius: var(--radius-pill);
       padding: 6px 14px;
       cursor: pointer;
       white-space: nowrap;
       transition: background .15s, border-color .15s;
     }
-    .refresh-btn:hover { background: var(--surface2); border-color: var(--accent); }
+    .refresh-btn:hover { background: var(--surface2); border-color: #4CAF50; }
     .refresh-btn svg   { width: 13px; height: 13px; stroke: currentColor; fill: none; flex-shrink: 0; }
     .refresh-btn.spinning svg { animation: spin .7s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
@@ -125,22 +125,22 @@
       gap: 7px;
       font-family: 'Noto Sans TC', sans-serif;
       font-size: 12px;
-      color: var(--accent-dark);
-      background: var(--accent-light);
-      border: 1px solid rgba(232,132,90,0.4);
+      color: #2E7D32;
+      background: #E8F5E9;
+      border: 1px solid rgba(60,160,70,0.4);
       border-radius: var(--radius-pill);
       padding: 6px 16px;
       text-decoration: none;
       white-space: nowrap;
       transition: background .15s, border-color .15s;
     }
-    .sheet-btn:hover { background: #fbd4c0; border-color: var(--accent); }
+    .sheet-btn:hover { background: #b2dfdb; border-color: #4CAF50; }
     .sheet-btn svg   { width: 14px; height: 14px; flex-shrink: 0; }
 
     /* ══ HERO ══ */
     .hero {
-      background: linear-gradient(180deg, #FFF3E0 0%, #FFE0B2 60%, #FFCC80 100%);
-      border-bottom: 1px solid var(--border2);
+      background: linear-gradient(180deg, #F0FAF0 0%, #E8F5E9 50%, #C8E6C9 100%);
+      border-bottom: 1px solid rgba(100,170,100,0.2);
       padding: 1.2rem 2rem 1rem;
       position: relative;
       overflow: hidden;
@@ -176,11 +176,12 @@
       font-family: 'Noto Serif TC', serif;
       font-size: 30px;
       font-weight: 600;
-      color: var(--text);
+      color: #1A3D1F;
       line-height: 1.4;
       margin-bottom: .65rem;
+      text-shadow: 0 0 12px rgba(255,255,255,0.95), 0 0 6px rgba(255,255,255,0.9), 0 1px 0 rgba(255,255,255,0.8);
     }
-    .hero-sub { font-size: 14px; color: var(--text2); line-height: 1.85; }
+    .hero-sub { font-size: 14px; color: #1A3D1F; font-weight: 500; line-height: 1.85; text-shadow: 0 0 10px rgba(255,255,255,0.95), 0 0 5px rgba(255,255,255,0.9); }
 
     /* ══ ERROR BANNER ══ */
     .error-banner {
@@ -188,18 +189,18 @@
       max-width: 1100px;
       margin: 1rem auto 0;
       padding: .75rem 2rem;
-      background: #fff3f3;
-      border: 0.5px solid #f5a0a0;
+      background: #FFF8E1;
+      border: 0.5px solid rgba(251,192,45,0.5);
       border-radius: var(--radius-md);
       font-size: 13px;
-      color: #9b2c2c;
+      color: #F57F17;
     }
     .error-banner.show { display: block; }
 
     /* ══ TICKER ══ */
     .ticker-wrap {
-      background: linear-gradient(90deg, #FDEBD0 0%, #FAE0BC 50%, #FDEBD0 100%);
-      border-bottom: 1px solid rgba(200,130,60,0.25);
+      background: rgba(255,255,255,0.82);
+      border-bottom: 1px solid rgba(76,175,80,0.18);
       height: 34px;
       position: sticky;
       top: 48px;
@@ -210,13 +211,13 @@
     }
     .ticker-mascot {
       flex-shrink: 0;
-      width: 50px;
+      width: 48px;
       height: 34px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(210,120,50,0.12);
-      border-right: 1px solid rgba(180,100,30,0.18);
+      background: transparent;
+      border-right: 1px solid rgba(76,175,80,0.15);
       overflow: hidden;
     }
     .ticker-text {
@@ -231,11 +232,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 13px;
-      color: #7B3F00;
+      font-size: 12px;
+      color: #2E7D32;
       font-weight: 400;
-      letter-spacing: .03em;
-      font-size: 11.5px;
+      letter-spacing: .06em;
       padding: 0 2rem;
       text-align: center;
     }
@@ -253,7 +253,7 @@
     /* ══ FILTER BAR ══ */
     .controls-bar {
       background: var(--surface);
-      border-bottom: 1px solid var(--border2);
+      border-bottom: 1px solid rgba(100,170,100,0.2);
       padding: .9rem 2rem;
     }
     .controls-inner {
@@ -269,7 +269,7 @@
       font-size: 12px;
       padding: 5px 16px;
       border-radius: var(--radius-pill);
-      border: 1px solid var(--border2);
+      border: 1px solid rgba(60,140,70,0.25);
       background: transparent;
       color: var(--text2);
       cursor: pointer;
@@ -277,8 +277,8 @@
     }
     .filter-btn:hover { background: var(--surface2); }
     .filter-btn.active {
-      background: var(--accent);
-      border-color: var(--accent);
+      background: #4CAF50;
+      border-color: #4CAF50;
       color: #fff;
     }
 
@@ -292,14 +292,14 @@
     }
     .stat {
       background: var(--surface);
-      border: 1px solid var(--border2);
+      border: 1px solid rgba(76,175,80,0.35);
       border-radius: var(--radius-md);
       padding: .9rem 1.25rem;
       flex: 1;
       transition: box-shadow .15s;
     }
-    .stat:hover { box-shadow: 0 2px 12px rgba(200,100,50,0.09); }
-    .stat-n { font-size: 28px; font-weight: 500; color: var(--accent); }
+    .stat:hover { box-shadow: 0 2px 12px rgba(40,120,50,0.07); }
+    .stat-n { font-size: 28px; font-weight: 500; color: #2E7D32; }
     .stat-l { font-size: 11px; color: var(--text3); margin-top: 3px; }
 
     /* ══ GRID ══ */
@@ -315,15 +315,15 @@
     /* ══ CARD ══ */
     .card {
       background: var(--surface);
-      border: 1px solid var(--border2);
+      border: 1px solid rgba(60,140,70,0.25);
       border-radius: var(--radius-lg);
       display: flex;
       flex-direction: column;
       transition: border-color .2s, box-shadow .2s, transform .15s;
     }
     .card:hover {
-      border-color: rgba(232,132,90,0.5);
-      box-shadow: 0 4px 20px rgba(200,100,50,0.10);
+      border-color: rgba(76,175,80,0.6);
+      box-shadow: 0 4px 20px rgba(40,120,50,0.08);
       transform: translateY(-2px);
     }
     .card-body {
@@ -339,17 +339,17 @@
     .card-date { font-size: 11px; color: var(--text3); }
     .card-source {
       font-size: 10px; padding: 2px 8px;
-      border-radius: 4px; background: var(--surface2); color: var(--text3);
+      border-radius: 4px; background: #E8F5E9; color: #2E7D32; border: 0.5px solid rgba(60,140,70,0.2);
     }
     .card-tag {
       font-size: 10px; padding: 3px 10px;
       border-radius: var(--radius-pill); font-weight: 500;
       white-space: nowrap; flex-shrink: 0;
     }
-    .tag-趨勢新聞 { background: var(--warm1-light); color: var(--warm1-text); }
-    .tag-ESG永續  { background: var(--warm3-light); color: var(--warm3-text); }
-    .tag-團隊共識 { background: var(--warm2-light); color: var(--warm2-text); }
-    .tag-default  { background: var(--surface2);    color: var(--text2); }
+    .tag-趨勢新聞 { background: #E3F2FD; color: #0D47A1; border: 0.5px solid rgba(13,71,161,0.2); }
+    .tag-ESG永續  { background: #E8F5E9; color: #1B5E20; border: 0.5px solid rgba(27,94,32,0.2); }
+    .tag-團隊共識 { background: #FFF3E0; color: #E65100; border: 0.5px solid rgba(230,81,0,0.2); }
+    .tag-default  { background: #F5F5F5; color: #424242; border: 0.5px solid rgba(0,0,0,0.1); }
 
     .card-title {
       font-family: 'Noto Serif TC', serif;
@@ -364,14 +364,14 @@
     }
     .card-link {
       display: inline-flex; align-items: center; gap: 5px;
-      font-size: 12px; color: var(--accent); text-decoration: none;
+      font-size: 12px; color: #388E3C; text-decoration: none;
       transition: color .15s;
     }
-    .card-link:hover { color: var(--accent-dark); }
+    .card-link:hover { color: #1B5E20; }
     .card-link svg { width: 12px; height: 12px; stroke: currentColor; fill: none; }
     .card-link.data {
       font-size: 11px; color: var(--warm3-text);
-      background: var(--warm3-light); border: 0.5px solid rgba(200,169,110,0.45);
+      background: #E8F5E9; border: 0.5px solid rgba(76,175,80,0.4);
       border-radius: var(--radius-pill); padding: 3px 10px;
     }
     .card-link.data:hover { background: #f5e8c8; color: #4a3008; }
@@ -436,53 +436,52 @@
     <div class="ticker-mascot">
       <svg width="46" height="30" viewBox="0 0 72 40" xmlns="http://www.w3.org/2000/svg">
         <defs>
+          <!-- 手電筒光束：白偏綠 -->
           <linearGradient id="bm" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%"   stop-color="#FFEE58" stop-opacity="1"/>
-            <stop offset="65%"  stop-color="#FFEE58" stop-opacity="0.55"/>
-            <stop offset="100%" stop-color="#FFEE58" stop-opacity="0"/>
+            <stop offset="0%"   stop-color="#CCFF90" stop-opacity="0.95"/>
+            <stop offset="65%"  stop-color="#CCFF90" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#CCFF90" stop-opacity="0"/>
           </linearGradient>
           <radialGradient id="lg" cx="35%" cy="50%" r="65%">
             <stop offset="0%"   stop-color="#FFFFFF"/>
-            <stop offset="100%" stop-color="#FFE082" stop-opacity="0.7"/>
+            <stop offset="100%" stop-color="#B9F6CA" stop-opacity="0.7"/>
           </radialGradient>
         </defs>
 
         <!-- 光束扇形 -->
         <polygon points="41,19  58,5  72,5  72,33  58,33" fill="url(#bm)"/>
-        <!-- 中心亮芯 -->
-        <polygon points="41,19  60,15  72,17  72,23  60,25" fill="#FFFFFF" opacity="0.35"/>
-        <!-- 光芒邊界 -->
-        <line x1="41" y1="19" x2="72" y2="5"  stroke="#FFEE58" stroke-width="1" opacity="0.6"/>
-        <line x1="41" y1="19" x2="72" y2="33" stroke="#FFEE58" stroke-width="1" opacity="0.6"/>
+        <polygon points="41,19  60,15  72,17  72,23  60,25" fill="#FFFFFF" opacity="0.3"/>
+        <line x1="41" y1="19" x2="72" y2="5"  stroke="#B2FF59" stroke-width="0.8" opacity="0.6"/>
+        <line x1="41" y1="19" x2="72" y2="33" stroke="#B2FF59" stroke-width="0.8" opacity="0.6"/>
 
-        <!-- 頭髮 -->
-        <ellipse cx="13" cy="5"  rx="8"   ry="3.5" fill="#7B3F1E"/>
-        <ellipse cx="6"  cy="10" rx="3"   ry="4.5" fill="#7B3F1E"/>
-        <!-- 頭 -->
-        <circle  cx="13" cy="14" r="9"             fill="#FFD9A8"/>
+        <!-- 頭髮（深棕，中性）-->
+        <ellipse cx="13" cy="5"  rx="8"   ry="3.5" fill="#5D4037"/>
+        <ellipse cx="6"  cy="10" rx="3"   ry="4.5" fill="#5D4037"/>
+        <!-- 頭（自然膚色）-->
+        <circle  cx="13" cy="14" r="9"             fill="#FFF9C4"/>
         <!-- 眼睛 -->
-        <circle  cx="17" cy="12" r="1.6"           fill="#3A2410"/>
+        <circle  cx="17" cy="12" r="1.6"           fill="#3E2723"/>
         <circle  cx="17.7" cy="11.3" r="0.6"       fill="white"/>
         <!-- 腮紅 -->
-        <ellipse cx="19.5" cy="16" rx="2" ry="1.3" fill="#F4A0A0" opacity="0.7"/>
+        <ellipse cx="19.5" cy="16" rx="2" ry="1.3" fill="#EF9A9A" opacity="0.6"/>
         <!-- 微笑 -->
-        <path d="M11 18 Q15 21.5 19 18" stroke="#8B3A0A" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-        <!-- 身體 -->
-        <ellipse cx="13" cy="31" rx="8"   ry="7"   fill="#F5956A"/>
+        <path d="M11 18 Q15 21.5 19 18" stroke="#4E342E" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        <!-- 身體（綠色衣服）-->
+        <ellipse cx="13" cy="31" rx="8"   ry="7"   fill="#66BB6A"/>
         <!-- 左手 -->
-        <line x1="6"  y1="27" x2="2"  y2="32" stroke="#D4704A" stroke-width="2.8" stroke-linecap="round"/>
-        <circle cx="1.5" cy="33" r="2.2"           fill="#FFD9A8"/>
+        <line x1="6"  y1="27" x2="2"  y2="32" stroke="#4CAF50" stroke-width="2.8" stroke-linecap="round"/>
+        <circle cx="1.5" cy="33" r="2.2"           fill="#FFF9C4"/>
         <!-- 右手 -->
-        <line x1="21" y1="25" x2="30" y2="18" stroke="#D4704A" stroke-width="2.8" stroke-linecap="round"/>
-        <circle cx="30.5" cy="17.5" r="2"          fill="#FFD9A8"/>
-        <!-- 手電筒筒身 -->
-        <rect x="30" y="15" width="12" height="7" rx="2.5" fill="#5D4037"/>
+        <line x1="21" y1="25" x2="30" y2="18" stroke="#4CAF50" stroke-width="2.8" stroke-linecap="round"/>
+        <circle cx="30.5" cy="17.5" r="2"          fill="#FFF9C4"/>
+        <!-- 手電筒筒身（深綠）-->
+        <rect x="30" y="15" width="12" height="7" rx="2.5" fill="#2E7D32"/>
         <!-- 手電筒頭 -->
-        <rect x="41" y="12" width="5"  height="13" rx="2" fill="#37251E"/>
+        <rect x="41" y="12" width="5"  height="13" rx="2" fill="#1B5E20"/>
         <!-- 鏡片 -->
         <ellipse cx="46" cy="18.5" rx="2.2" ry="5.5" fill="url(#lg)"/>
-        <!-- 按鈕 -->
-        <circle cx="36" cy="18.5" r="1.4"           fill="#FFEE58"/>
+        <!-- 按鈕（亮綠）-->
+        <circle cx="36" cy="18.5" r="1.4"           fill="#B2FF59"/>
         <circle cx="36" cy="18.5" r="0.7"           fill="#FFFFFF"/>
       </svg>
     </div>
@@ -492,94 +491,157 @@
   <!-- ══ HERO ══ -->
   <section class="hero">
     <!-- 療癒背景 SVG -->
-    <svg class="hero-bg" viewBox="0 0 1100 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-
-      <!-- 背景漸層底色 -->
+    <svg class="hero-bg" viewBox="0 0 1100 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%"  stop-color="#FFF9C4"/>
-          <stop offset="100%" stop-color="#FFE082" stop-opacity="0"/>
-        </radialGradient>
+        <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%"   stop-color="#F0FAF0"/>
+          <stop offset="100%" stop-color="#C8E6C9"/>
+        </linearGradient>
+        <clipPath id="heroClip">
+          <rect width="1100" height="200"/>
+        </clipPath>
       </defs>
+      <g clip-path="url(#heroClip)">
 
-      <!-- 太陽光暈（縮小）-->
-      <circle cx="920" cy="65" r="72" fill="url(#sunGlow)" opacity="0.65"/>
+        <!-- 天空底色 -->
+        <rect width="1100" height="200" fill="url(#skyGrad)"/>
 
-      <!-- 太陽本體（縮小）-->
-      <circle cx="920" cy="65" r="48" fill="#FFD740" opacity="0.45"/>
-      <circle cx="920" cy="65" r="36" fill="#FFCA28" opacity="0.55"/>
+        <!-- 遠山層 1（最遠、最淡、藍灰綠）-->
+        <path d="M-10 130 Q80 75 200 105 Q330 138 430 85 Q530 35 650 78 Q770 118 870 65 Q970 15 1110 55 L1110 200 L-10 200Z"
+              fill="#B2DFDB" opacity="0.45"/>
 
-      <!-- 太陽光芒（縮小）-->
-      <g stroke="#FFD740" stroke-width="3" stroke-linecap="round" opacity="0.35">
-        <line x1="920" y1="18" x2="920" y2="8"/>
-        <line x1="920" y1="112" x2="920" y2="122"/>
-        <line x1="873" y1="65" x2="863" y2="65"/>
-        <line x1="967" y1="65" x2="977" y2="65"/>
-        <line x1="887" y1="32" x2="880" y2="25"/>
-        <line x1="953" y1="32" x2="960" y2="25"/>
-        <line x1="887" y1="98" x2="880" y2="105"/>
-        <line x1="953" y1="98" x2="960" y2="105"/>
+        <!-- 遠山層 2（中遠、柔綠）-->
+        <path d="M-10 152 Q60 108 165 128 Q290 152 385 112 Q482 72 582 108 Q682 144 805 102 Q905 65 1005 98 Q1060 118 1110 94 L1110 200 L-10 200Z"
+              fill="#A5D6A7" opacity="0.6"/>
+
+        <!-- 中景草坡（飽和嫩綠）-->
+        <path d="M-10 170 Q105 142 225 158 Q368 176 465 144 Q562 114 685 146 Q808 178 906 144 Q985 120 1110 148 L1110 200 L-10 200Z"
+              fill="#81C784" opacity="0.75"/>
+
+        <!-- 近景草地（最深最前）-->
+        <path d="M-10 186 Q125 168 285 180 Q448 192 585 172 Q722 152 862 172 Q985 190 1110 170 L1110 200 L-10 200Z"
+              fill="#4CAF50" opacity="0.85"/>
+
+        <!-- 草地底色 -->
+        <rect x="-10" y="194" width="1120" height="8" fill="#43A047" opacity="0.9"/>
+
+        <!-- 風力發電機（左中景）-->
+        <g transform="translate(185,115)" opacity="0.7">
+          <line x1="0" y1="0" x2="0" y2="58" stroke="#90A4AE" stroke-width="2.5"/>
+          <circle cx="0" cy="0" r="3" fill="#78909C"/>
+          <line x1="0" y1="0" x2="0" y2="-24" stroke="#90A4AE" stroke-width="2"/>
+          <line x1="0" y1="0" x2="21" y2="12" stroke="#90A4AE" stroke-width="2"/>
+          <line x1="0" y1="0" x2="-21" y2="12" stroke="#90A4AE" stroke-width="2"/>
+        </g>
+        <g transform="translate(245,103)" opacity="0.55">
+          <line x1="0" y1="0" x2="0" y2="65" stroke="#90A4AE" stroke-width="2.2"/>
+          <circle cx="0" cy="0" r="2.5" fill="#78909C"/>
+          <line x1="0" y1="0" x2="0" y2="-20" stroke="#90A4AE" stroke-width="1.8"/>
+          <line x1="0" y1="0" x2="17" y2="10" stroke="#90A4AE" stroke-width="1.8"/>
+          <line x1="0" y1="0" x2="-17" y2="10" stroke="#90A4AE" stroke-width="1.8"/>
+        </g>
+        <g transform="translate(760,98)" opacity="0.6">
+          <line x1="0" y1="0" x2="0" y2="68" stroke="#90A4AE" stroke-width="2.5"/>
+          <circle cx="0" cy="0" r="3" fill="#78909C"/>
+          <line x1="0" y1="0" x2="0" y2="-23" stroke="#90A4AE" stroke-width="2"/>
+          <line x1="0" y1="0" x2="20" y2="12" stroke="#90A4AE" stroke-width="2"/>
+          <line x1="0" y1="0" x2="-20" y2="12" stroke="#90A4AE" stroke-width="2"/>
+        </g>
+
+        <!-- 小屋（右中）-->
+        <g transform="translate(828,124)" opacity="0.78">
+          <rect x="-18" y="0" width="36" height="25" rx="2" fill="#F5F0E8"/>
+          <polygon points="-22,-2 0,-20 22,-2" fill="#C07850"/>
+          <rect x="-6" y="12" width="12" height="13" rx="2" fill="#8D6E63"/>
+          <rect x="-15" y="4" width="9" height="8" rx="1" fill="#B3E5FC" opacity="0.9"/>
+          <rect x="6"  y="4" width="9" height="8" rx="1" fill="#B3E5FC" opacity="0.9"/>
+          <rect x="12" y="-25" width="5" height="12" rx="1" fill="#BCA89A"/>
+        </g>
+        <g transform="translate(878,135)" opacity="0.6">
+          <rect x="-13" y="0" width="26" height="18" rx="2" fill="#EEE8DD"/>
+          <polygon points="-16,-2 0,-16 16,-2" fill="#B06040"/>
+          <rect x="-5" y="8" width="10" height="10" rx="2" fill="#8D6E63"/>
+          <rect x="-11" y="3" width="7" height="6" rx="1" fill="#B3E5FC" opacity="0.9"/>
+        </g>
+
+        <!-- 熱氣球（右上）-->
+        <g transform="translate(1020,28)" opacity="0.82">
+          <ellipse cx="0" cy="0" rx="24" ry="28" fill="#FF7043"/>
+          <path d="M-24 0 Q-12,-28 0,-28 Q12,-28 24,0" fill="#FFCA28"/>
+          <path d="M-24 0 Q0,9 24,0" fill="#E64A19"/>
+          <line x1="-11" y1="26" x2="-9" y2="37" stroke="#6D4C41" stroke-width="1.5"/>
+          <line x1="11"  y1="26" x2="9"  y2="37" stroke="#6D4C41" stroke-width="1.5"/>
+          <rect x="-11" y="37" width="22" height="11" rx="3" fill="#A1887F"/>
+        </g>
+
+        <!-- 小樹（近景）-->
+        <g transform="translate(358,160)" opacity="0.9">
+          <rect x="-4" y="0" width="8" height="20" rx="2" fill="#6D4C41"/>
+          <ellipse cx="0" cy="-9" rx="17" ry="15" fill="#388E3C"/>
+          <ellipse cx="-8" cy="-3" rx="11" ry="9"  fill="#2E7D32"/>
+        </g>
+        <g transform="translate(396,167)" opacity="0.75">
+          <rect x="-3" y="0" width="6" height="15" rx="2" fill="#795548"/>
+          <ellipse cx="0" cy="-6" rx="13" ry="11" fill="#43A047"/>
+        </g>
+        <g transform="translate(608,156)" opacity="0.85">
+          <rect x="-4" y="0" width="8" height="22" rx="2" fill="#5D4037"/>
+          <ellipse cx="0" cy="-10" rx="16" ry="14" fill="#2E7D32"/>
+          <ellipse cx="-7" cy="-4" rx="10" ry="8"  fill="#1B5E20"/>
+        </g>
+        <g transform="translate(640,163)" opacity="0.65">
+          <rect x="-3" y="0" width="6" height="16" rx="2" fill="#6D4C41"/>
+          <ellipse cx="0" cy="-7" rx="12" ry="10" fill="#388E3C"/>
+        </g>
+
+        <!-- 蝴蝶（左中點綴）-->
+        <g transform="translate(290,75)" opacity="0.65">
+          <path d="M0,0 Q-13,-11 -9,-20 Q-5,-28 0,-22 Z" fill="#FF8A65"/>
+          <path d="M0,0 Q13,-11 9,-20 Q5,-28 0,-22 Z"  fill="#FFAB76"/>
+          <path d="M0,0 Q-11,9 -8,17 Q-4,23 0,19 Z"   fill="#FFCC02" opacity="0.85"/>
+          <path d="M0,0 Q11,9 8,17 Q4,23 0,19 Z"       fill="#FFD740" opacity="0.85"/>
+          <line x1="0" y1="-22" x2="0" y2="19" stroke="#4E342E" stroke-width="1"/>
+        </g>
+
+        <!-- 雲朵 -->
+        <g class="cloud cloud-1">
+          <ellipse cx="700" cy="48" rx="65" ry="23" fill="white" opacity="0.8"/>
+          <ellipse cx="665" cy="37" rx="40" ry="27" fill="white" opacity="0.8"/>
+          <ellipse cx="732" cy="35" rx="34" ry="22" fill="white" opacity="0.8"/>
+          <ellipse cx="760" cy="46" rx="28" ry="18" fill="white" opacity="0.8"/>
+          <animateTransform attributeName="transform" type="translate" values="0,0;14,0;0,0" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        </g>
+        <g class="cloud cloud-2">
+          <ellipse cx="380" cy="42" rx="54" ry="20" fill="white" opacity="0.7"/>
+          <ellipse cx="348" cy="32" rx="34" ry="23" fill="white" opacity="0.7"/>
+          <ellipse cx="410" cy="30" rx="29" ry="18" fill="white" opacity="0.7"/>
+          <animateTransform attributeName="transform" type="translate" values="0,0;-14,0;0,0" dur="11s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        </g>
+        <g class="cloud cloud-3">
+          <ellipse cx="100" cy="55" rx="58" ry="20" fill="white" opacity="0.65"/>
+          <ellipse cx="68"  cy="44" rx="35" ry="22" fill="white" opacity="0.65"/>
+          <ellipse cx="130" cy="43" rx="30" ry="18" fill="white" opacity="0.65"/>
+          <animateTransform attributeName="transform" type="translate" values="0,0;12,0;0,0" dur="13s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        </g>
+        <g class="cloud cloud-4">
+          <ellipse cx="920" cy="30" rx="42" ry="15" fill="white" opacity="0.5"/>
+          <ellipse cx="892" cy="22" rx="26" ry="14" fill="white" opacity="0.5"/>
+          <ellipse cx="945" cy="21" rx="22" ry="12" fill="white" opacity="0.5"/>
+          <animateTransform attributeName="transform" type="translate" values="0,0;-10,0;0,0" dur="7s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        </g>
+
+        <!-- 底部波浪（讓草地和下方內容過渡自然）-->
+        <path d="M0 198 Q120 190 240 196 Q380 202 520 192 Q660 182 800 194 Q930 206 1100 194"
+              stroke="white" stroke-width="2" fill="none" opacity="0.4"/>
+
       </g>
-
-      <!-- 太陽臉（縮小，用 id 讓 JS 切換表情）-->
-      <circle cx="920" cy="65" r="26" fill="#FFFDE7" opacity="0.93"/>
-      <!-- 腮紅（固定）-->
-      <ellipse cx="907" cy="71" rx="5" ry="3" fill="#FFAB76" opacity="0.55"/>
-      <ellipse cx="933" cy="71" rx="5" ry="3" fill="#FFAB76" opacity="0.55"/>
-      <!-- 表情群組（由 JS 切換）-->
-      <g id="sun-face" stroke="#E65100" stroke-width="2.2" fill="none" stroke-linecap="round">
-        <!-- 預設：閉眼微笑 -->
-        <path id="eye-l" d="M911 60 Q914 55 917 60"/>
-        <path id="eye-r" d="M923 60 Q926 55 929 60"/>
-        <path id="mouth" d="M913 70 Q920 78 927 70"/>
-      </g>
-
-      <!-- 雲朵 1（右下）-->
-      <g opacity="0.55" class="cloud cloud-1">
-        <ellipse cx="1020" cy="155" rx="75" ry="35" fill="#FFF8E1"/>
-        <ellipse cx="980"  cy="142" rx="48" ry="32" fill="#FFF8E1"/>
-        <ellipse cx="1055" cy="140" rx="40" ry="28" fill="#FFF8E1"/>
-        <ellipse cx="1090" cy="155" rx="32" ry="24" fill="#FFF8E1"/>
-        <animateTransform attributeName="transform" type="translate" values="0,0; 16,0; 0,0" dur="7s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"/>
-      </g>
-
-      <!-- 雲朵 2（中間偏右）-->
-      <g opacity="0.4" class="cloud cloud-2">
-        <ellipse cx="720" cy="165" rx="60" ry="28" fill="#FFE0B2"/>
-        <ellipse cx="688" cy="155" rx="38" ry="25" fill="#FFE0B2"/>
-        <ellipse cx="750" cy="152" rx="34" ry="22" fill="#FFE0B2"/>
-        <animateTransform attributeName="transform" type="translate" values="0,0; -18,0; 0,0" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"/>
-      </g>
-
-      <!-- 雲朵 3（左側）-->
-      <g opacity="0.5" class="cloud cloud-3">
-        <ellipse cx="120" cy="150" rx="85" ry="36" fill="#FFF8E1"/>
-        <ellipse cx="72"  cy="138" rx="50" ry="30" fill="#FFF8E1"/>
-        <ellipse cx="160" cy="136" rx="44" ry="26" fill="#FFF8E1"/>
-        <ellipse cx="200" cy="150" rx="36" ry="24" fill="#FFF8E1"/>
-        <animateTransform attributeName="transform" type="translate" values="0,0; 14,0; 0,0" dur="11s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"/>
-      </g>
-
-      <!-- 小雲朵（上方點綴）-->
-      <g opacity="0.3" class="cloud cloud-4">
-        <ellipse cx="350" cy="30" rx="45" ry="20" fill="#FFF8E1"/>
-        <ellipse cx="320" cy="24" rx="28" ry="18" fill="#FFF8E1"/>
-        <ellipse cx="375" cy="22" rx="24" ry="16" fill="#FFF8E1"/>
-        <animateTransform attributeName="transform" type="translate" values="0,0; -10,0; 0,0" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"/>
-      </g>
-
-      <!-- 小愛心 -->
-      <path d="M220 55 C220 50 213 46 209 51 C205 46 198 50 198 55 C198 64 209 73 209 73 C209 73 220 64 220 55Z" fill="#FFAB76" opacity="0.45"/>
-      <path d="M70 80 C70 76 65 73 62 77 C59 73 54 76 54 80 C54 87 62 93 62 93 C62 93 70 87 70 80Z" fill="#FFD54F" opacity="0.35"/>
-
-      <!-- 小星星 -->
-      <polygon points="160,50 163,60 173,60 165,67 168,77 160,71 152,77 155,67 147,60 157,60" fill="#FFD740" opacity="0.4"/>
-      <polygon points="280,90 282,96 288,96 283,100 285,106 280,102 275,106 277,100 272,96 278,96" fill="#FFD740" opacity="0.3"/>
     </svg>
 
     <div class="hero-inner">
-      <h1>利他共好平台</h1>
-      <p class="hero-sub">集結PLANET共識、永續行動、趨勢新聞等議題，運用AI自製影片與大家一起分享交流！</p>
+      <div style="display:inline-block; background:rgba(255,255,255,0.72); backdrop-filter:blur(2px); border-radius:12px; padding:0.8rem 1.4rem;">
+        <h1>利他共好平台</h1>
+        <p class="hero-sub">集結PLANET共識、永續行動、趨勢新聞等議題，運用AI自製影片與大家一起分享交流！</p>
+      </div>
     </div>
   </section>
 
@@ -797,49 +859,6 @@
 
     /* ── 啟動 + 每 5 分鐘自動同步 ── */
 
-    /* ── 太陽表情切換（開朗正向，每3秒換一次）── */
-    (function initSunFace() {
-      // cx=920 cy=65 臉半徑26，用 innerHTML 整體替換避免 fill 衝突
-      const FACES = [
-        // 1. 閉眼溫柔微笑
-        `<path d="M911 59 Q914 54 917 59" stroke="#E65100" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-         <path d="M923 59 Q926 54 929 59" stroke="#E65100" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-         <path d="M913 70 Q920 78 927 70" stroke="#E65100" stroke-width="2.2" fill="none" stroke-linecap="round"/>`,
-        // 2. 圓眼驚喜開心
-        `<circle cx="914" cy="59" r="3" fill="#E65100"/>
-         <circle cx="926" cy="59" r="3" fill="#E65100"/>
-         <circle cx="915" cy="57.5" r="1" fill="white"/>
-         <circle cx="927" cy="57.5" r="1" fill="white"/>
-         <path d="M912 70 Q920 79 928 70" stroke="#E65100" stroke-width="2.2" fill="none" stroke-linecap="round"/>`,
-        // 3. 眨眼俏皮（左閉右開）
-        `<path d="M911 59 Q914 54 917 59" stroke="#E65100" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-         <circle cx="926" cy="59" r="3" fill="#E65100"/>
-         <circle cx="927" cy="57.5" r="1" fill="white"/>
-         <path d="M913 70 Q920 77 927 70" stroke="#E65100" stroke-width="2.2" fill="none" stroke-linecap="round"/>`,
-        // 4. 星星眼超開心
-        `<path d="M910 61 L914 57 L918 61 M912 57.5 L916 61.5" stroke="#E65100" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-         <path d="M922 61 L926 57 L930 61 M924 57.5 L928 61.5" stroke="#E65100" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-         <path d="M911 70 Q920 81 929 70" stroke="#E65100" stroke-width="2.5" fill="none" stroke-linecap="round"/>`,
-        // 5. 大笑（大嘴）
-        `<circle cx="914" cy="59" r="3" fill="#E65100"/>
-         <circle cx="926" cy="59" r="3" fill="#E65100"/>
-         <circle cx="915" cy="57.5" r="1" fill="white"/>
-         <circle cx="927" cy="57.5" r="1" fill="white"/>
-         <path d="M911 69 Q920 83 929 69" stroke="#E65100" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-         <path d="M912 72 Q920 80 928 72" fill="#E65100" opacity="0.15"/>`,
-      ];
-
-      const group = document.getElementById('sun-face');
-      if (!group) return;
-
-      let idx = 0;
-      group.innerHTML = FACES[0];
-
-      setInterval(() => {
-        idx = (idx + 1) % FACES.length;
-        group.innerHTML = FACES[idx];
-      }, 3000);
-    })();
 
 
     loadData();
