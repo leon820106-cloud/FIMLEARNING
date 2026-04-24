@@ -337,6 +337,7 @@
     .card-top-left { display: flex; flex-direction: column; gap: 6px; flex: 1; }
     .card-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .card-date { font-size: 11px; color: var(--text3); }
+    .card-source-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: -2px; }
     .card-source {
       font-size: 10px; padding: 2px 8px;
       border-radius: 4px; background: #FFFDE7; color: #F57F17; border: 0.5px solid rgba(245,127,23,0.25);
@@ -750,8 +751,8 @@
             <div class="card-top-left">
               <div class="card-meta">
                 <span class="card-date">${fmtDate(r.date)}</span>
-                ${r.source ? `<span class="card-source">${r.source}</span>` : ''}
               </div>
+              ${r.source ? `<div class="card-source-row"><span class="card-source">${r.source}</span></div>` : ''}
               <div class="card-title">${r.title}</div>
             </div>
             ${r.type ? `<span class="card-tag ${tagCls}">${r.type}</span>` : ''}
